@@ -1,0 +1,38 @@
+boost:
+  filename: boost_%s.tar.bz2
+  sha256: 7f6130bc3cf65f56a618888ce9d5ea704fa10b462be126ad053e80e553d6d8b7
+  size: "92155315"
+  url: https://dl.bintray.com/boostorg/release/1.68.0/source/boost_%s.tar.bz2
+  version: "1_68_0"
+icu:
+  filename: icu-release-%s.tar.gz
+  sha256: e15ffd84606323cbad5515bf9ecdf8061cc3bf80fb883b9e6aa162e485aa9761
+  size: "43740444"
+  url: https://github.com/unicode-org/icu/archive/release-%s.tar.gz
+  version: 62-1
+lksctp:
+  filename: lksctp-tools-%s.tar.gz
+  sha256: 1aeb204cdb2befc94d9eb3037d1609c9d1d2cd5379d6dd2c0a8ca9b10533aa15
+  size: "795762"
+  skip: "true"
+  url: http://lksctp.sourceforge.net/
+  version: 1.0.17
+mbedtls:
+  filename: mbedtls-mbedtls-%s.tar.gz
+  sha256: e62fdea0110d3aa9082b3e1ccdbbaf520161830b1f3a57ae3124a7d5963c2a37
+  size: "2345612"
+  url: https://github.com/ARMmbed/mbedtls/archive/mbedtls-%s.tar.gz
+  version: 2.13.1
+openssl:
+  filename: openssl-%s.tar.gz
+  sha256: 2836875a0f89c03d0fdf483941512613a50cfb421d6fd94b9f41d7279d586a3d
+  size: "8337920"
+  url: https://www.openssl.org/source/openssl-%s.tar.gz
+  version: 1.1.1
+zlib:
+  filename: zlib-%s.tar.xz
+  sha256: 4ff941449631ace0d4d203e3483be9dbc9da454084111f97ea0a2114e19bf066
+  size: "467960"
+  skip: "true"
+  url: https://zlib.net/
+  version: 1.2.11
