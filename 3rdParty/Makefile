@@ -24,7 +24,7 @@ $(OSName): download depend lksctp zlib openssl
 
 .PHONY: download
 download:
-	go run download.go
+	env GO111MODULE=off go run download.go
 
 depend: icu boost mbedtls
 

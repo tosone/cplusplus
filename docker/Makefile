@@ -23,4 +23,4 @@ exec:
 	docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $(docker_container) /usr/bin/fish
 
 exec-build:
-	docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $(docker_container) /bin/sh -c "cd /root/data && make depend all"
+	docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $(docker_container) /usr/bin/fish -c "mkdir -p /data/gocode/src; cd /root/data; cp -r vendor/* /data/gocode/src; make depend all"

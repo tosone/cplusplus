@@ -7,6 +7,7 @@
 
 3rdParty/zlib/
 3rdParty/boost/
+3rdParty/boost*/
 3rdParty/lksctp/
 3rdParty/mbedtls/
 3rdParty/openssl/

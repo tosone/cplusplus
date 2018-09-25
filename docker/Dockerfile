@@ -19,10 +19,6 @@ RUN mkdir -p /root/.config/fish && \
 
 RUN rm -f /etc/localtime && ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-RUN go get -v github.com/Unknwon/com && \
-  go get -v gopkg.in/cheggaaa/pb.v2 && \
-  go get -v gopkg.in/yaml.v2
-
 VOLUME /root/data
 
 ENV SHELL /usr/bin/fish
