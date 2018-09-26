@@ -1,0 +1,4 @@
+GCC     = g++
+prefix  = $(shell pwd)/../drivers
+CFLAGS  = -I$(prefix)/include
+LDFLAGS = -O3 -static -L$(prefix)/lib

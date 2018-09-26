@@ -1,0 +1,5 @@
+all:
+	@for file in *.cpp; do \
+		$(CXX) $(CFLAGS)  -o `echo $$file | cut -d. -f1`.test $$file $(LDFLAGS); \
+		strip `echo $$file | cut -d. -f1`.test; \
+	done

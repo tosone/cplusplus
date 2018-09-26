@@ -103,7 +103,6 @@ func main() {
 				panic(err)
 			}
 		} else if path.Ext(filename) == ".xz" {
-			fmt.Println(filename)
 			if err = archiver.TarXZ.Open(filename, "../3rdParty"); err != nil {
 				panic(err)
 			}
@@ -114,6 +113,8 @@ func main() {
 		} else {
 			panic(fmt.Sprintf("suffix cannot be recognized: %s", path.Ext(filename)))
 		}
+
+		fmt.Printf("Uncompress %s success...\n", key)
 
 		if com.IsDir(key) {
 			if err = os.RemoveAll(key); err != nil {

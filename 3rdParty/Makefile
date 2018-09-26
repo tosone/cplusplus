@@ -1,5 +1,4 @@
-drivers                       = $(shell pwd)/../drivers
-prefix                        = $(shell pwd)/../temp-drivers
+include ../Makefile.constant
 
 prefix_flags                  = --prefix=$(prefix)
 static_flags                  = --enable-shared=no --enable-static=yes
@@ -20,18 +19,18 @@ else
 	endif
 endif
 
-$(OSName): download depend lksctp zlib openssl
+$(OSName): download depend
 
 .PHONY: download
 download:
 	env GO111MODULE=off go run download.go
 
-depend: icu boost mbedtls
+depend: icu boost mbedtls zlib openssl
 
 .PHONY: boost
 boost:
-	cd $@ && ./bootstrap.sh --with-icu=$(prefix) --with-libraries=atomic,wave $(prefix_flags) && \
-	./b2 link=static threading=multi runtime-link=static $(prefix_flags) -j8 -a install
+	cd $@ && ./bootstrap.sh --with-icu=$(prefix) --with-libraries=atomic,wave,date_time,thread,math,log $(prefix_flags) && \
+	./b2 link=static threading=multi runtime-link=static $(prefix_flags) -a install
 
 .PHONY: icu
 icu:
@@ -42,12 +41,6 @@ icu:
 mbedtls:
 	cd $@ && make clean && make DESTDIR=$(prefix) install
 
-.PHONY: lksctp
-lksctp:
-	cd $@ && if [ -f Makefile ]; then make clean; fi && \
-	aclocal && env ACLOCAL=aclocal-1.16 AUTOMAKE=automake-1.16 ./configure $(prefix_flags) $(static_flags) --enable-silent-rules --disable-libtool-lock --disable-tests && \
-	make -j8 && make install
-
 .PHONY: zlib
 zlib:
 	cd $@ && if [ -f Makefile ]; then make clean; fi || \
@@ -57,5 +50,5 @@ zlib:
 .PHONY: openssl
 openssl:
 	cd $@ && if [ -f Makefile ]; then make clean; fi && \
-	./Configure $(openssl_flags) $(prefix_flags) no-shared no-asm no-async -I$(prefix)/include -L$(prefix)/lib zlib sctp && \
+	./Configure $(openssl_flags) $(prefix_flags) no-shared no-asm no-async -I$(prefix)/include -L$(prefix)/lib zlib && \
 	make -j8 && make install

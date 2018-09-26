@@ -15,4 +15,4 @@
 3rdParty/openssl/
 3rdParty/icu/
 
-temp-drivers/
+drivers/

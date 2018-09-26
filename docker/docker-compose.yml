@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  cplusplus:
+    container_name: cplusplus-build
+    image: cplusplus-build:dev
+    restart: always
+    volumes:
+      - ..:/root/gocode/src/github.com/tosone/cplusplus
+    hostname: cplusplus
+    tty: true

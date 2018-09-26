@@ -3,24 +3,23 @@ docker_name             := $(app_name)
 docker_tag              := dev
 docker_container        := $(app_name)
 
+.PHONY: upgrade
 upgrade:
-	docker pull alpine:edge
+	docker pull golang:1.11.0-alpine3.8
 
 .PHONY: build
 build:
 	docker build -t $(docker_name):$(docker_tag) .
 
+.PHONY: run
 run:
-	if [ ! 'docker inspect -f {{.State.Running}} $(docker_container)' ]; then \
-		docker stop $(docker_container); \
-	fi
-	if [ ! 'docker ps -a | grep $(docker_container))' ]; then \
-		docker rm $(docker_container); \
-	fi
-	docker run -it --hostname $(app_name) --name $(docker_container) --restart always -v $(shell pwd)/..:/root/data -d $(docker_name):$(docker_tag)
+	docker-compose up --force-recreate --build -d
 
+.PHONY: exec
 exec:
 	docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $(docker_container) /usr/bin/fish
 
+.PHONY: exec-build
 exec-build:
-	docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $(docker_container) /usr/bin/fish -c "mkdir -p /data/gocode/src; cd /root/data; cp -r vendor/* /data/gocode/src; make depend all"
+	docker exec -e COLUMNS="`tput cols`" -e LINES="`tput lines`" -it $(docker_container) /usr/bin/fish -c \
+	"cd /root/gocode/src/github.com/tosone/cplusplus; make depend all"

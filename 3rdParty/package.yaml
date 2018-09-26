@@ -10,13 +10,6 @@ icu:
   size: "43740444"
   url: https://github.com/unicode-org/icu/archive/release-%s.tar.gz
   version: 62-1
-lksctp:
-  filename: lksctp-tools-%s.tar.gz
-  sha256: 1aeb204cdb2befc94d9eb3037d1609c9d1d2cd5379d6dd2c0a8ca9b10533aa15
-  size: "795762"
-  skip: "true"
-  url: http://lksctp.sourceforge.net/
-  version: 1.0.17
 mbedtls:
   filename: mbedtls-mbedtls-%s.tar.gz
   sha256: e62fdea0110d3aa9082b3e1ccdbbaf520161830b1f3a57ae3124a7d5963c2a37
