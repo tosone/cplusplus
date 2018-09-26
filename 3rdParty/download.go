@@ -9,12 +9,12 @@ import (
 	"math"
 	"net/http"
 	"os"
-	"os/exec"
 	"path"
 	"strconv"
 	"strings"
 
 	"github.com/Unknwon/com"
+	"github.com/mholt/archiver"
 	"gopkg.in/cheggaaa/pb.v2"
 	"gopkg.in/yaml.v2"
 )
@@ -98,16 +98,21 @@ func main() {
 			}
 		}
 
-		var uncompressFlag = "zxf"
 		if path.Ext(filename) == ".bz2" {
-			uncompressFlag = "xjf"
+			if err = archiver.TarBz2.Open(filename, "../3rdParty"); err != nil {
+				panic(err)
+			}
 		} else if path.Ext(filename) == ".xz" {
-			uncompressFlag = "xJf"
-		}
-		if err = exec.Command("tar", uncompressFlag, filename).Run(); err != nil {
-			fmt.Errorf("Uncompress %s with error: %v.\n", key, err)
+			fmt.Println(filename)
+			if err = archiver.TarXZ.Open(filename, "../3rdParty"); err != nil {
+				panic(err)
+			}
+		} else if path.Ext(filename) == ".gz" {
+			if err = archiver.TarGz.Open(filename, "../3rdParty"); err != nil {
+				panic(err)
+			}
 		} else {
-			fmt.Printf("Uncompress %s success.\n", key)
+			panic(fmt.Sprintf("suffix cannot be recognized: %s", path.Ext(filename)))
 		}
 
 		if com.IsDir(key) {

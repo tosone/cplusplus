@@ -4,8 +4,9 @@ ADD .gitconfig /root
 
 WORKDIR /root
 
-RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org/https:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories && \
-  apk update && apk upgrade && \
+# RUN sed -i 's/http:\/\/dl-cdn.alpinelinux.org/https:\/\/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+
+RUN apk update && apk upgrade && \
   apk add mdocml-apropos coreutils gcc g++ libc-dev ca-certificates curl wget autoconf automake file libtool pkgconfig \
   bc tree vim git fish dialog less dos2unix diffutils unzip make cmake tzdata linux-headers go
 

@@ -1,10 +1,31 @@
 # github.com/Unknwon/com v0.0.0-20180617003950-da59b551951d
 github.com/Unknwon/com
+# github.com/dsnet/compress v0.0.0-20171208185109-cc9eb1d7ad76
+github.com/dsnet/compress/bzip2
+github.com/dsnet/compress/bzip2/internal/sais
+github.com/dsnet/compress/internal
+github.com/dsnet/compress/internal/errors
+github.com/dsnet/compress/internal/prefix
+github.com/dsnet/compress
+# github.com/golang/snappy v0.0.0-20180518054509-2e65f85255db
+github.com/golang/snappy
 # github.com/mattn/go-colorable v0.0.9
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.4
 github.com/mattn/go-isatty
-# golang.org/x/sys v0.0.0-20180924175946-90868a75fefd
+# github.com/mholt/archiver v2.1.0+incompatible
+github.com/mholt/archiver
+# github.com/nwaples/rardecode v0.0.0-20171029023500-e06696f847ae
+github.com/nwaples/rardecode
+# github.com/pierrec/lz4 v2.0.5+incompatible
+github.com/pierrec/lz4
+github.com/pierrec/lz4/internal/xxh32
+# github.com/ulikunitz/xz v0.5.4
+github.com/ulikunitz/xz
+github.com/ulikunitz/xz/internal/xlog
+github.com/ulikunitz/xz/lzma
+github.com/ulikunitz/xz/internal/hash
+# golang.org/x/sys v0.0.0-20180925112736-b09afc3d579e
 golang.org/x/sys/unix
 # gopkg.in/VividCortex/ewma.v1 v1.1.1
 gopkg.in/VividCortex/ewma.v1

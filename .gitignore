@@ -1,6 +1,8 @@
 .DS_Store
 *.test
 
+.idea/
+
 3rdParty/*.tar.bz2
 3rdParty/*.tar.gz
 3rdParty/*.tar.xz

@@ -13,10 +13,10 @@ ifeq ($(OS),Windows_NT)
 	OSName                    = Windows
 else
 	OSName = $(shell echo $(shell uname -s))
-	ifeq ($(OSName), Linux)	
-		openssl_flags         = linux-x86_64	
-	else ifeq ($(OSName), Darwin)	
-		openssl_flags         = darwin64-x86_64-cc	
+	ifeq ($(OSName), Linux)
+		openssl_flags         = linux-x86_64
+	else ifeq ($(OSName), Darwin)
+		openssl_flags         = darwin64-x86_64-cc
 	endif
 endif
 
@@ -45,7 +45,7 @@ mbedtls:
 .PHONY: lksctp
 lksctp:
 	cd $@ && if [ -f Makefile ]; then make clean; fi && \
-	./configure $(prefix_flags) $(static_flags) --enable-silent-rules --disable-libtool-lock --disable-tests && \
+	aclocal && env ACLOCAL=aclocal-1.16 AUTOMAKE=automake-1.16 ./configure $(prefix_flags) $(static_flags) --enable-silent-rules --disable-libtool-lock --disable-tests && \
 	make -j8 && make install
 
 .PHONY: zlib
@@ -54,7 +54,8 @@ zlib:
 	./configure $(prefix_flags) --static --64 && \
 	make -j8 && make install
 
-openssl: lksctp zlib
+.PHONY: openssl
+openssl:
 	cd $@ && if [ -f Makefile ]; then make clean; fi && \
 	./Configure $(openssl_flags) $(prefix_flags) no-shared no-asm no-async -I$(prefix)/include -L$(prefix)/lib zlib sctp && \
 	make -j8 && make install
